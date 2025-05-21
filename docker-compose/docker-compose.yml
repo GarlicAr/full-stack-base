@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+    api:
+        build: ../docker/api
+        container_name: new-api
+        env_file: ../.env
+        volumes:
+            - ../api:/var/www/html
+        ports:
+            - "8000:9000"
+        depends_on:
+            - db
+        networks: [laravel]
+
+    web:
+        build: ../docker/web
+        container_name: new-web
+        volumes:
+            - ../web:/app
+        ports:
+            - "5173:5173"
+        depends_on:
+            - api
+        networks: [laravel]
+
+    db:
+        image: postgres:16-alpine
+        container_name: new-db
+        environment:
+            POSTGRES_DB: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: root
+        volumes:
+            - db_data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        networks: [laravel]
+
+volumes:
+    db_data:
+
+networks:
+    laravel:
+        driver: bridge
