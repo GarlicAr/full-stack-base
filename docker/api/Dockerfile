@@ -7,7 +7,7 @@ RUN apk add --no-cache \
 FROM composer:2.7 AS vendor
 WORKDIR /app
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --prefer-dist --no-interaction --no-scripts
+RUN composer install --prefer-dist --no-interaction --no-scripts
 
 FROM base AS build
 WORKDIR /var/www/html

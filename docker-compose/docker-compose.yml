@@ -5,14 +5,13 @@ services:
         build:
             context: ..
             dockerfile: docker/api/Dockerfile
-        container_name: new-api
-        env_file: ../.env
         volumes:
-            - ../api:/var/www/html
+            - ../:/var/www/html:cached
+            - vendordata:/var/www/html/vendor
+        command: php artisan serve --host=0.0.0.0 --port=8000
         ports:
-            - "8000:9000"
-        depends_on:
-            - db
+            - "8000:8000"
+        depends_on: [db]
         networks: [laravel]
 
     web:
@@ -43,7 +42,7 @@ services:
 
 volumes:
     db_data:
-
+    vendordata:
 networks:
     laravel:
         driver: bridge

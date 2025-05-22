@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
+COMPOSE="docker compose -f docker-compose/docker-compose.yml"
 
-docker compose -f docker-compose/docker-compose.yml up -d --build
+echo "Building and launching containers…"
+$COMPOSE up -d --build
 
-docker exec -it new-api php artisan key:generate --force
-docker exec -it new-api php artisan migrate --seed --force
+echo "Ensuring PHP dependencies are present…"
+$COMPOSE exec -T api test -f vendor/autoload.php || \
+    $COMPOSE exec -T api composer install --prefer-dist
 
-echo -e "\nReady!  API → http://localhost:8000   React → http://localhost:5173"
+echo "Running key-generate and migrations…"
+$COMPOSE exec -T api php artisan key:generate --force
+$COMPOSE exec -T api php artisan migrate --seed --force
+
+echo -e "\nReady:"
+echo "   API   → http://localhost:8000"
+echo "   React → http://localhost:5173"
+echo "   Exit this shell to stop and remove the stack."
+trap "$COMPOSE down" EXIT
+$COMPOSE exec api sh
