@@ -14,4 +14,9 @@ class UserRepository extends BaseRepository {
         return $this->all();
     }
 
+    public function create(array $data): User
+    {
+        return $this->model->store($data);
+    }
+
 }
