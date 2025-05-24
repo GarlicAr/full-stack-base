@@ -17,9 +17,7 @@ export default function DefaultHeader() {
   return (
     <div className="container">
       <div className="content">
-        <div className="right-side-header">
-          <Menu mode="horizontal" items={items} />
-        </div>
+        <Menu mode="horizontal" items={items} />
       </div>
     </div>
   );
