@@ -11,6 +11,7 @@
   --color-border: #d1d5db;
   --color-text-light: #111827;
   --color-selected: #EAEFEF;
+  --color-secondary: rgba(189, 251, 125, 0.9);
 }
 
 @layer components {
@@ -119,6 +120,11 @@
 
     .register-form-wrapper{
         @apply flex flex-col items-center-safe justify-center h-lvh;
+    }
+
+    .ant-btn-secondary{
+        @apply w-full;
+        background-color: var(--color-secondary) !important;
     }
 
 }

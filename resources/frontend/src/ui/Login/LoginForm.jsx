@@ -1,33 +1,33 @@
 import { Button, Form, message } from 'antd';
 import { useIntl } from 'react-intl';
 import Input from '../Input/Input.jsx';
-import { register } from '../../services/AuthServices.jsx';
+import { login } from '../../services/AuthServices.jsx';
 import { showApiErrors } from '../../utils/showApiErrors.jsx';
 import { useNavigate } from 'react-router-dom';
-export default function RegisterForm() {
+export default function LoginForm() {
   const [form] = Form.useForm();
   const intl = useIntl();
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
     try {
-      await register(values);
-      message.success(intl.formatMessage({ id: 'register.success' }));
+      await login(values);
+      message.success(intl.formatMessage({ id: 'login.success' }));
       form.resetFields();
-      navigate('/login', { replace: true });
+      navigate('/', { replace: true });
     } catch (err) {
       showApiErrors(err);
     }
   };
 
-  const onNavigateLogin = () => {
-    navigate('/login', { replace: true });
+  const onNavigateRegister = () => {
+    navigate('/register', { replace: true });
   };
 
   return (
     <Form
       form={form}
-      name={'register'}
+      name={'login'}
       layout={'vertical'}
       onFinish={onFinish}
       className={'register-form'}
@@ -44,15 +44,15 @@ export default function RegisterForm() {
           id: 'register.password_placeholder',
         })}
         password={true}
-        validations={'password'}
+        validations={'required'}
         validateTrigger={['blur']}
       />
       <Button type="primary" htmlType="submit">
-        {intl.formatMessage({ id: 'auth.register' })}
+        {intl.formatMessage({ id: 'auth.login' })}
       </Button>
 
-      <Button type="secondary" onClick={onNavigateLogin}>
-        {intl.formatMessage({ id: 'auth.login' })}
+      <Button type="secondary" onClick={onNavigateRegister}>
+        {intl.formatMessage({ id: 'auth.register' })}
       </Button>
     </Form>
   );

@@ -11,4 +11,5 @@ export const validationRules = {
       messageParams: { min: 3 },
     },
   ],
+  required: [{ required: true, messageId: 'login.required_password' }],
 };

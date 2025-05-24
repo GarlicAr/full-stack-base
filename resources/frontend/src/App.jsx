@@ -5,6 +5,7 @@ import './App.css';
 import HomePage from './public/pages/home/HomePage';
 import DefaultLayout from './public/components/DefaultLayout';
 import Register from './public/pages/Auth/Register.jsx';
+import Login from './public/pages/Auth/Login.jsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route index element={<HomePage />} />
           </Route>
           <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </IntlProvider>
