@@ -1,5 +1,10 @@
 FROM php:8.2-fpm-alpine AS base
 
+RUN apk add --no-cache curl \
+ && curl -sS https://getcomposer.org/installer | php \
+ && mv composer.phar /usr/local/bin/composer \
+ && chmod +x /usr/local/bin/composer
+
 RUN apk add --no-cache \
         bash icu-dev libpq-dev git unzip libzip-dev \
     && docker-php-ext-install intl pdo_pgsql opcache zip bcmath
