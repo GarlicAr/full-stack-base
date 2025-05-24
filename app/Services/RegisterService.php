@@ -22,6 +22,7 @@ class RegisterService
         }
 
         $data['password'] = Hash::make($data['password']);
+        $data['name'] = $data['email'];
 
         $user = $this->userRepository->store($data);
 
