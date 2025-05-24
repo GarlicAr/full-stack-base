@@ -1,16 +1,16 @@
-@import "tailwindcss";  
+@import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @theme {
 
-  --color-surface: #111827;        
-  --color-surface-light: #ffffff;  
-  --color-text: #d1d5db;   
-  --color-border: #d1d5db;          
+  --color-surface: #111827;
+  --color-surface-light: #ffffff;
+  --color-text: #d1d5db;
+  --color-border: #d1d5db;
   --color-text-light: #111827;
-  --color-selected: #EAEFEF;     
+  --color-selected: #EAEFEF;
 }
 
 @layer components {
@@ -50,8 +50,8 @@
 
   .ant-layout-content {
     flex: 1 0 auto;
-    padding: 0 24px;  
-    min-height: 100vh !important; 
+    padding: 0 24px;
+    min-height: 100vh !important;
     margin-inline: auto;
     width: 100%;
   }
@@ -80,7 +80,7 @@
   }
 
   .page-content {
-    max-width: 768px; 
+    max-width: 768px;
     margin-inline: auto;
   }
 
@@ -96,5 +96,29 @@
     background: var(--color-surface);
     color: var(--color-text);
   }
+
+  .register-form {
+    @apply max-w-md mx-auto mt-12 bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl space-y-6;
+      padding: 20px !important;
+  }
+
+  .register-form .ant-form-item {
+    @apply mb-4;
+  }
+
+  .register-form .ant-input,
+  .register-form .ant-input-password {
+    @apply rounded-lg border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700
+           placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:ring focus:ring-blue-200;
+  }
+
+  .register-form .ant-btn-primary {
+    @apply w-full py-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600
+           hover:from-blue-600 hover:to-indigo-700 text-white font-semibold;
+  }
+
+    .register-form-wrapper{
+        @apply flex flex-col items-center-safe justify-center h-lvh;
+    }
 
 }

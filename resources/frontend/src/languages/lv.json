@@ -1,3 +1,11 @@
 {
-    "navigation.main": "Sākums"
+    "navigation.main": "Sākums",
+    "auth.register": "Reģistrēties",
+
+    "register.email_required": "Nepieciešams pievienot e-pastu!",
+    "register.password_required": "Nepieciešama parole!",
+    "register.password_placeholder": "Ievadi paroli",
+    "register.email_placeholder": "Ievadi e-pastu",
+    "register.email_invalid": "Nepareizs e-pasts!",
+    "register.password_minlength": "Parole jābūt vismaz {min} rakstzīmēm!"
 }
