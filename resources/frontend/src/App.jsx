@@ -1,9 +1,25 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { IntlProvider } from 'react-intl';
+import lv from './languages/lv.json';  
 import './App.css'
+import HomePage from './public/pages/home/HomePage';
+import DefaultLayout from './public/components/DefaultLayout';
+
+
 
 function App() {
 
-  return <Home/>
-
+  return (
+    <IntlProvider locale="lv" messages={lv} defaultLocale="lv">
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout/>}>
+            <Route index element={<HomePage/>} />
+          </Route>        
+        </Routes>
+      </BrowserRouter>
+    </IntlProvider>
+  );
 }
 
 export default App

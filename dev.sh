@@ -9,6 +9,10 @@ echo "Ensuring PHP dependencies are present…"
 $COMPOSE exec -T api test -f vendor/autoload.php || \
     $COMPOSE exec -T api composer install --prefer-dist
 
+echo "Ensuring JS dependencies are present…"
+$COMPOSE exec -T web test -d node_modules || \
+$COMPOSE exec -T web npm ci
+
 echo "Running key-generate and migrations…"
 $COMPOSE exec -T api php artisan key:generate --force
 $COMPOSE exec -T api php artisan migrate --seed --force
