@@ -7,6 +7,7 @@ import DefaultLayout from './public/components/DefaultLayout';
 import Register from './public/pages/Auth/Register.jsx';
 import Login from './public/pages/Auth/Login.jsx';
 import PrivateRoute from './utils/PrivateRoute.jsx';
+import PostsPage from './public/pages/Posts/PostsPage.jsx';
 
 function App() {
   return (
@@ -19,6 +20,15 @@ function App() {
               element={
                 <PrivateRoute>
                   <HomePage />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path={'/posts'}
+              element={
+                <PrivateRoute>
+                  <PostsPage />
                 </PrivateRoute>
               }
             />

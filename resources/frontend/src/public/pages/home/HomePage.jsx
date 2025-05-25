@@ -1,3 +1,13 @@
+import useAuth from '../../../hooks/useAuth.jsx';
+
 export default function HomePage() {
-  return <div className="text-red-500">Hello world</div>;
+  const { user, loading } = useAuth();
+
+  return (
+    !loading && (
+      <div className="text-red-500 font-semibold text-xl leading-tight">
+        Sveicināts manā mājaslapā, {user.name} !
+      </div>
+    )
+  );
 }

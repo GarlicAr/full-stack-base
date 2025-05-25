@@ -12,6 +12,11 @@ export default function DefaultHeader() {
       label: intl.formatMessage({ id: 'navigation.main' }),
       onClick: () => navigate('/'),
     },
+    {
+      key: 'posts',
+      label: intl.formatMessage({ id: 'navigation.posts' }),
+      onClick: () => navigate('/posts'),
+    },
   ];
 
   return (
