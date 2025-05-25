@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Services\CommentService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    use AuthorizesRequests;
     public function __construct(private CommentService $CommentService) {}
 
     public function store(Request $request, Post $post)
