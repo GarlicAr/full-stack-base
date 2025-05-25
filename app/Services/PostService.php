@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Post;
 use App\Repositories\PostRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +24,11 @@ class PostService
         $data['user_id'] = $user->id;
 
         return $this->PostRepository->store($data);
+    }
+
+    public function show(Post $post)
+    {
+        return $this->PostRepository->show($post);
     }
 
 }

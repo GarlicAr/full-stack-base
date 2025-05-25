@@ -4,6 +4,7 @@ import DefaultLayout from '../DefaultLayout/index.jsx';
 import HomePage from '../../pages/home/HomePage.jsx';
 import PostsPage from '../../pages/Posts/PostsPage.jsx';
 import Create from '../../pages/Posts/Create/Create.jsx';
+import ViewPost from '../../pages/Posts/View/ViewPost.jsx';
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
@@ -38,6 +39,14 @@ export default function Router() {
           element={
             <PrivateRoute>
               <Create />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={'/posts/:id'}
+          element={
+            <PrivateRoute>
+              <ViewPost />
             </PrivateRoute>
           }
         />

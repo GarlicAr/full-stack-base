@@ -21,7 +21,7 @@ abstract class BaseRepository
     /**
      * @return \Illuminate\Database\Eloquent\Collection|Model[]
      */
-    public function all(array $columns = ['*'], ?string $orderBy = null, ?string $orderByDirection = 'asc')
+    public function all(array $columns = ['*'], ?string $orderBy = null, ?string $orderByDirection = 'desc')
     {
         $query = $this->model->query();
 

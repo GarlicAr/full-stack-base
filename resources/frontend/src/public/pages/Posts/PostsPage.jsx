@@ -23,7 +23,12 @@ export default function PostsPage() {
         {posts &&
           posts.map((post) => {
             return (
-              <Post title={post.title} content={post.content} key={post.id} />
+              <Post
+                title={post.title}
+                content={post.content}
+                key={post.id}
+                id={post.id}
+              />
             );
           })}
       </div>

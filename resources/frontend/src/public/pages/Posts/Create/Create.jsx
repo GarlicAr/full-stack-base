@@ -47,7 +47,7 @@ export default function Create() {
   };
 
   return (
-    <div>
+    <div className={'flex flex-col items-center'}>
       <div className="title">CREATE POST</div>
       <Form
         form={form}
@@ -56,7 +56,12 @@ export default function Create() {
         onFinish={onFinish}
         className="register-form"
       >
-        <Input name={'title'} label="Title" validations={'required_input'} />
+        <Input
+          name={'title'}
+          label="Title"
+          validations={'required_input'}
+          className={'text-amber-50'}
+        />
         <Input
           name={'content'}
           label="content"
