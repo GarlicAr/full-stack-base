@@ -1,9 +1,12 @@
 import { Button, Form, message } from 'antd';
 import { useIntl } from 'react-intl';
 import Input from '../Input/Input.jsx';
-import { login } from '../../services/AuthServices.jsx';
 import { showApiErrors } from '../../utils/showApiErrors.jsx';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { BASE_URL } from '../../config/config.jsx';
+import getCookie from '../../utils/getCookie.jsx';
+
 export default function LoginForm() {
   const [form] = Form.useForm();
   const intl = useIntl();
@@ -11,7 +14,16 @@ export default function LoginForm() {
 
   const onFinish = async (values) => {
     try {
-      await login(values);
+      await axios.get(`${BASE_URL}/sanctum/csrf-cookie`, {
+        withCredentials: true,
+      });
+
+      await axios.post(`${BASE_URL}/api/login`, values, {
+        withCredentials: true,
+        headers: {
+          'X-XSRF-TOKEN': getCookie('XSRF-TOKEN'),
+        },
+      });
       message.success(intl.formatMessage({ id: 'login.success' }));
       form.resetFields();
       navigate('/', { replace: true });

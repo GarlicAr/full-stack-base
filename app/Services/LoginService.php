@@ -23,7 +23,6 @@ class LoginService
         }
 
         auth()->login($user);
-        request()->session()->regenerate();
 
         return response()->json([
             'message' => 'Login successful',
