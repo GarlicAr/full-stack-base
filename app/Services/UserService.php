@@ -29,6 +29,7 @@ class UserService {
             'name' => $user->name,
             'email' => $user->email,
             'authenticated' => true,
+            'id' => $user->id
         ]);
     }
 }
