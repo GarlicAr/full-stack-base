@@ -6,6 +6,7 @@
 
     "auth.register": "Reģistrēties",
     "auth.login": "Autorizēties",
+    "auth.logout": "Izlogoties",
 
     "register.email_required": "Nepieciešams pievienot e-pastu!",
     "register.password_required": "Nepieciešama parole!",

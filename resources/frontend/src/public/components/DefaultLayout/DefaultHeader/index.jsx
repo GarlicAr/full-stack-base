@@ -1,10 +1,35 @@
-import { Menu } from 'antd';
+import { Menu, message } from 'antd';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
+import getCookie from '../../../../utils/getCookie.jsx';
+import { BASE_URL } from '../../../../config/config.jsx';
+import axios from 'axios';
+import useAuth from '../../../../hooks/useAuth.jsx';
 
 export default function DefaultHeader() {
   const intl = useIntl();
   const navigate = useNavigate();
+  const { user, loading } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        `${BASE_URL}/api/logout`,
+        {},
+        {
+          withCredentials: true,
+          headers: {
+            'X-XSRF-TOKEN': getCookie('XSRF-TOKEN'),
+          },
+        }
+      );
+      message.success('Logged out successfully');
+      navigate('/login');
+    } catch (error) {
+      console.error(error);
+      message.error('Logout failed');
+    }
+  };
 
   const items = [
     {
@@ -24,10 +49,18 @@ export default function DefaultHeader() {
     },
     {
       key: 'profile',
-      label: intl.formatMessage({ id: 'navigation.profile' }),
+      label: intl.formatMessage({ id: 'navigation.create_post' }),
       onClick: () => navigate('/profile'),
     },
   ];
+
+  if (!loading && user) {
+    items.push({
+      key: 'logout',
+      label: intl.formatMessage({ id: 'auth.logout' }),
+      onClick: handleLogout,
+    });
+  }
 
   return (
     <div className="container">
