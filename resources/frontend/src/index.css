@@ -127,4 +127,21 @@
         background-color: var(--color-secondary) !important;
     }
 
+      .post {
+        @apply p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 mb-4;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
+
+      .theme-dark .post {
+        @apply bg-gray-900 text-white;
+      }
+
+      .post-title {
+        @apply text-2xl font-bold mb-2 text-gray-800 dark:text-gray-200;
+      }
+
+      .post-content {
+        @apply text-gray-700 dark:text-gray-300;
+      }
+
 }

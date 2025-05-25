@@ -19,7 +19,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ],[
             'name' => 'Test User',
-            'password' => Hash::make('test') 
+            'password' => Hash::make('test')
         ]);
+
+        $this->call(UserSeeder::class);
+        $this->call(CategorySeeder::class);
+        $this->call(PostsSeeder::class);
+        $this->call(CommentsSeeder::class);
     }
 }
