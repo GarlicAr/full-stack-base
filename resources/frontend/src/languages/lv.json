@@ -2,6 +2,7 @@
     "navigation.main": "Sākums",
     "navigation.posts": "Posti",
     "navigation.create_post": "Izveidot postu",
+    "navigation.profile": "Mans Profils",
 
     "auth.register": "Reģistrēties",
     "auth.login": "Autorizēties",

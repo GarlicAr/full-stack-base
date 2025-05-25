@@ -21,6 +21,7 @@ Route::middleware('web')->group(function () {
         Route::post('posts', [PostController::class, 'store']);
         Route::get('posts/{post}', [PostController::class, 'show']);
         Route::post('posts/{post}/comments', [CommentController::class, 'store']);
+        Route::get('posts/user/{user}', [PostController::class, 'showUserPosts']);
 
         Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
 
