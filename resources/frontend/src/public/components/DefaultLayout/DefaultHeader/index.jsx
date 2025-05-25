@@ -49,7 +49,7 @@ export default function DefaultHeader() {
     },
     {
       key: 'profile',
-      label: intl.formatMessage({ id: 'navigation.create_post' }),
+      label: intl.formatMessage({ id: 'navigation.profile' }),
       onClick: () => navigate('/profile'),
     },
   ];
