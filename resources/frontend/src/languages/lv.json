@@ -1,6 +1,7 @@
 {
     "navigation.main": "Sākums",
     "navigation.posts": "Posti",
+    "navigation.create_post": "Izveidot postu",
 
     "auth.register": "Reģistrēties",
     "auth.login": "Autorizēties",
@@ -13,6 +14,8 @@
     "register.password_minlength": "Parole jābūt vismaz {min} rakstzīmēm!",
     "register.success": "Veiksmīga reģistrācija!",
 
-    "login.required_password": "Lūdzu ievadi paroli"
+    "login.required_password": "Lūdzu ievadi paroli",
+
+    "message.input_required": "Laukam jābūt aizpildītam"
 
 }

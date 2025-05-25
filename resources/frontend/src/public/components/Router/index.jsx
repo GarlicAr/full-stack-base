@@ -3,6 +3,7 @@ import useAuth from '../../../hooks/useAuth.jsx';
 import DefaultLayout from '../DefaultLayout/index.jsx';
 import HomePage from '../../pages/home/HomePage.jsx';
 import PostsPage from '../../pages/Posts/PostsPage.jsx';
+import Create from '../../pages/Posts/Create/Create.jsx';
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
@@ -29,6 +30,14 @@ export default function Router() {
           element={
             <PrivateRoute>
               <PostsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={'/posts/create'}
+          element={
+            <PrivateRoute>
+              <Create />
             </PrivateRoute>
           }
         />

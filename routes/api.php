@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
@@ -16,6 +17,9 @@ Route::middleware('web')->group(function () {
         Route::get('user', [UserController::class, 'getAuthUser']);
 
         Route::get('posts', [PostController::class, 'index']);
+        Route::post('posts', [PostController::class, 'store']);
+
+        Route::get('categories', [CategoryController::class, 'index']);
     });
 
 });

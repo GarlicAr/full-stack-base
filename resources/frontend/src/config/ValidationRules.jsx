@@ -12,4 +12,5 @@ export const validationRules = {
     },
   ],
   required: [{ required: true, messageId: 'login.required_password' }],
+  required_input: [{ required: true, messageId: 'message.input_required' }],
 };
