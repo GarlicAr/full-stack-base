@@ -2,40 +2,19 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import lv from './languages/lv.json';
 import './App.css';
-import HomePage from './public/pages/home/HomePage';
-import DefaultLayout from './public/components/DefaultLayout';
 import Register from './public/pages/Auth/Register.jsx';
 import Login from './public/pages/Auth/Login.jsx';
-import PrivateRoute from './utils/PrivateRoute.jsx';
-import PostsPage from './public/pages/Posts/PostsPage.jsx';
+import Router from './public/components/Router/index.jsx';
 
 function App() {
   return (
     <IntlProvider locale="lv" messages={lv} defaultLocale="lv">
       <BrowserRouter>
         <Routes>
-          <Route element={<DefaultLayout />}>
-            <Route
-              index
-              element={
-                <PrivateRoute>
-                  <HomePage />
-                </PrivateRoute>
-              }
-            />
-
-            <Route
-              path={'/posts'}
-              element={
-                <PrivateRoute>
-                  <PostsPage />
-                </PrivateRoute>
-              }
-            />
-          </Route>
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
         </Routes>
+        <Router />
       </BrowserRouter>
     </IntlProvider>
   );
