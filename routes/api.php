@@ -22,6 +22,8 @@ Route::middleware('web')->group(function () {
         Route::get('posts/{post}', [PostController::class, 'show']);
         Route::post('posts/{post}/comments', [CommentController::class, 'store']);
 
+        Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
+
         Route::get('categories', [CategoryController::class, 'index']);
     });
 

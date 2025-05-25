@@ -88,6 +88,7 @@ export default function ViewPost() {
               body={comment.body}
               userId={comment.user_id}
               currentUser={user.id}
+              id={comment.id}
             />
           ))
         ) : (

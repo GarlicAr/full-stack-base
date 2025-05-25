@@ -20,8 +20,12 @@ export default function CommentProp({
           'X-XSRF-TOKEN': getCookie('XSRF-TOKEN'),
         },
       });
+      if (onDelete) {
+        onDelete();
+      } else {
+        window.location.reload();
+      }
       message.success('Comment deleted!');
-      if (onDelete) onDelete();
     } catch (err) {
       console.error(err);
       message.error('Failed to delete comment');

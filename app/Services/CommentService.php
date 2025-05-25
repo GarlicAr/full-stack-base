@@ -23,4 +23,9 @@ class CommentService
 
         return $comment;
     }
+
+    public function destroy(Comment $comment): bool
+    {
+        return $this->CommentRepository->delete($comment);
+    }
 }
