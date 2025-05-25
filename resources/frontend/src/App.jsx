@@ -6,6 +6,7 @@ import HomePage from './public/pages/home/HomePage';
 import DefaultLayout from './public/components/DefaultLayout';
 import Register from './public/pages/Auth/Register.jsx';
 import Login from './public/pages/Auth/Login.jsx';
+import PrivateRoute from './utils/PrivateRoute.jsx';
 
 function App() {
   return (
@@ -13,7 +14,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<DefaultLayout />}>
-            <Route index element={<HomePage />} />
+            <Route
+              index
+              element={
+                <PrivateRoute>
+                  <HomePage />
+                </PrivateRoute>
+              }
+            />
           </Route>
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />

@@ -12,6 +12,7 @@ Route::middleware('web')->group(function () {
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('users', [UserController::class, 'index']);
+        Route::get('user', [UserController::class, 'getAuthUser']);
     });
 
 });
